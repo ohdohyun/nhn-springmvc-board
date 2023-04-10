@@ -1,12 +1,10 @@
 package com.nhnacademy.springmvc.config;
 
 import com.nhnacademy.springmvc.controller.ControllerBase;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 @EnableWebMvc
 @Configuration
@@ -23,4 +21,16 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
+
+    //todo-6 시작 페이지 (welcome page ) / -> /main.do 이동
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addRedirectViewController("/","/main.do");
+    }
+
+    //todo-7 servlet 내에서만 공유되는 bean 등록
+    @Bean(name = "onlyServlet")
+    public String onlyServlet(){
+        return "onlyServlet";
+    }
 }
