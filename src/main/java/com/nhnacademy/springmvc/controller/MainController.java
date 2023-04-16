@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    //todo#7 - onlyServlet String 주입
+    //todo#8 - onlyServlet String 주입
     public MainController(String onlyServlet) {
         this.onlyServlet = onlyServlet;
     }
@@ -17,7 +17,7 @@ public class MainController {
 
     @GetMapping("/main.do")
     public String main(){
-        //todo#8 - onlyServlet String 출력
+        //todo#9 - onlyServlet String 출력
         log.info("onlyServlet:{}",onlyServlet);
         return "main";
     }
